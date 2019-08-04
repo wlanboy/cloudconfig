@@ -1,0 +1,26 @@
+spring:
+    cloud:
+        stream:
+            bindings:
+                input:
+                    consumer:
+                        ackEachRecord: true
+                        admin:
+                            replication-factor: 1
+                        autoCommitOffset: true
+                        autoCommitOnError: false
+                    content-type: application/json
+                    destination: HazelcastWorkDto
+                    group: HazelcastWork
+            kafka:
+                binder:
+                    autoCreateTopics: true
+                    brokers: nuc:9092
+                    replicationFactor: 1
+                    requiredAcks: 1
+    kafka:
+        consumer:
+            auto-offset-reset: latest
+            fetch-max-wait: 30s
+            max-poll-records: 1
+            start-offset: earliest
