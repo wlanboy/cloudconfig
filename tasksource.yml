@@ -1,0 +1,16 @@
+spring:
+    cloud:
+        stream:
+            bindings:
+                output:
+                    content-type: application/json
+                    destination: tasklog
+                    group: tasks
+                    producer:
+                        sync: true
+            kafka:
+                binder:
+                    autoCreateTopics: true
+                    brokers: nuc:9092
+                    replicationFactor: 1
+                    requiredAcks: 1
