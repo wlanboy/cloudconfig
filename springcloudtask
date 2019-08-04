@@ -1,0 +1,11 @@
+org:
+    hibernate:
+        dialect: MySQL5Dialect
+spring:
+    batch:
+        initialize-schema: always
+    datasource:
+        driver-class-name: org.mariadb.jdbc.Driver
+        password: spring
+        url: jdbc:mariadb://nuc:3306/cloudtask
+        username: spring
