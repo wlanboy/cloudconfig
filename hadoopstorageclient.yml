@@ -1,0 +1,13 @@
+HADOOP_HOME: /hadoop
+HADOOP_URL: hdfs://nuc:8020/
+dfs:
+    client:
+        use:
+            datanode:
+                hostname: true
+hadoop:
+    home:
+        dir: /hadoop
+management:
+    security:
+        enabled: false
