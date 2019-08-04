@@ -1,0 +1,8 @@
+feign:
+  client:
+    url:
+      mirrorserviceurl: http://mirrorservice:8080
+      simpleserviceurl: http://simpleservice:8001
+      sharedjobserviceurl: http://sharedjobservice:8008
+  hystrix:
+    enabled: false
