@@ -14,3 +14,14 @@ spring:
                     brokers: nuc:9092
                     replicationFactor: 1
                     requiredAcks: 1
+    jpa:
+        database-platform: org.hibernate.dialect.MariaDB103Dialect
+        generate-ddl: true
+        hibernate:
+            ddl-auto: update
+datasource:
+    tasklog:
+        driver-class-name: org.mariadb.jdbc.Driver
+        password: tasklog
+        url: jdbc:mariadb://nuc:3306/tasklog
+        username: tasklog
