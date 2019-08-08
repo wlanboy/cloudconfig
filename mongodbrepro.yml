@@ -1,0 +1,8 @@
+spring:
+   data:
+      mongodb:
+         host: nuc
+         port: 27017
+         user: spring
+         password: spring
+         database: spring
