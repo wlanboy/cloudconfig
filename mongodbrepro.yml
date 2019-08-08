@@ -1,6 +1,7 @@
 spring:
    data:
       mongodb:
+         uri=mongodb://nuc/spring
          host: nuc
          port: 27017
          user: spring
