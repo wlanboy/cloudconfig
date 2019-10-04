@@ -1,0 +1,14 @@
+spring:
+    kafka:
+        producer:
+            bootstrap-servers: nuc:9092
+            acks: 1
+            batch-size: 1
+            retries: 3
+        consumer:
+            group-id: searchworker
+            bootstrap-servers: nuc:9092
+            enable-auto-commit: true
+            auto-offset-reset: latest
+            fetch-max-wait: 30s
+            max-poll-records: 1

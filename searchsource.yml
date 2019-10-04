@@ -1,0 +1,7 @@
+spring:
+    kafka:
+        producer:
+            bootstrap-servers: nuc:9092
+            acks: 1
+            batch-size: 1
+            retries: 3
