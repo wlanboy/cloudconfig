@@ -1,7 +1,7 @@
 feign:
   client:
     url:
-      mirrorserviceurl: http://mirrorservice:8080
+      mirrorserviceurl: http://mirrorservice:8003
       simpleserviceurl: http://simpleservice:8201
       sharedjobserviceurl: http://sharedjobservice:8008
   hystrix:
