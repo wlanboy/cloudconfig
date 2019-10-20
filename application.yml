@@ -4,5 +4,8 @@ feign:
       mirrorserviceurl: http://mirrorservice:8003
       simpleserviceurl: http://simpleservice:8201
       sharedjobserviceurl: http://sharedjobservice:8008
+      searchsourceurl: http://searchsource:7100
+      tasklogsourceurl: http://tasklogsource:8011
+      crudserviceurl: http://crudservice:8002
   hystrix:
     enabled: false
