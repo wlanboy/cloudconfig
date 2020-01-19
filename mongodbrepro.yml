@@ -2,10 +2,10 @@ spring:
     data:
         mongodb:
             authentication-database: admin
-            database: springdb
+            database: spring
             host: nuc
-            password: springdb
+            password: spring
             port: 27017
             repositories:
                 type: auto
-            username: springdb
+            username: spring
