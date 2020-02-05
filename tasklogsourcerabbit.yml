@@ -4,15 +4,11 @@ spring:
             bindings:
                 output:
                     content-type: application/json
-                    bindQueue: true
                     destination: queue.tasks
-                    exchangeType: topic
-                    batchingEnabled: false
-                    batchSize: 1
                     binder: rabbit_server
             binders:
-               local_rabbit:
-               type: rabbit
+               rabbit_server:
+                  type: rabbit
                   environment:
                      spring:
                         rabbitmq:
