@@ -5,7 +5,6 @@ spring:
                 output:
                     content-type: application/json
                     bindQueue: true
-                    group: tasksWorker
                     destination: queue.tasks
                     exchangeType: topic
                     batchingEnabled: false
