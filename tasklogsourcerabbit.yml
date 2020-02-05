@@ -1,0 +1,35 @@
+spring:
+    cloud:
+        stream:
+            bindings:
+                output:
+                    content-type: application/json
+                    bindQueue: true
+                    group: tasksWorker
+                    destination: queue.tasks
+                    exchangeType: topic
+                    batchingEnabled: false
+                    batchSize: 1
+                    binder: rabbit_server
+            binders:
+               local_rabbit:
+               type: rabbit
+                  environment:
+                     spring:
+                        rabbitmq:
+                           host: nuc
+                           port: 5672
+                           username: guest
+                           password: guest
+                           virtual-host: /
+    jpa:
+        database-platform: org.hibernate.dialect.MariaDB103Dialect
+        generate-ddl: true
+        hibernate:
+            ddl-auto: update
+datasource:
+    tasklog:
+        driver-class-name: org.mariadb.jdbc.Driver
+        password: tasklog
+        url: jdbc:mariadb://nuc:3306/tasklog
+        username: tasklog
