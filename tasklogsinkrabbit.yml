@@ -1,0 +1,25 @@
+
+spring:
+    cloud:
+        stream:
+            bindings:
+                input:
+                    content-type: application/json
+                    bindQueue: true
+                    group: tasksWorker
+                    destination: queue.tasks
+                    exchangeType: topic
+                    batchingEnabled: false
+                    batchSize: 1
+                    binder: rabbit_server
+            binders:
+               local_rabbit:
+               type: rabbit
+                  environment:
+                     spring:
+                        rabbitmq:
+                           host: nuc
+                           port: 5672
+                           username: guest
+                           password: guest
+                           virtual-host: /
