@@ -14,7 +14,8 @@ spring:
                         rabbitmq:
                            host: nuc
                            port: 5672
-                           username: guest
-                           password: guest
-                           virtual-host: /
+                           username: spring
+                           password: spring
+                           virtual-host: /spring
+                           use-ssl: false
                            
