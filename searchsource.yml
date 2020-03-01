@@ -1,7 +1,8 @@
 spring:
-    kafka:
-        producer:
-            bootstrap-servers: nuc:9092
-            acks: 1
-            batch-size: 1
-            retries: 3
+    rabbitmq:
+        host: nuc
+        port: 5672
+        username: spring
+        password: spring
+        virtual-host: /spring
+        
