@@ -1,4 +1,4 @@
 elasticsearch:
     host: nuc
-    port: 9300
+    port: 9200
     clustername: docker-cluster
