@@ -1,0 +1,92 @@
+server:
+  port: 8080
+  address: 0.0.0.0
+
+  forward-headers-strategy: native
+  max-http-header-size: 8KB
+  max-http-request-header-size: 8KB
+  max-http-post-size: 20MB
+
+  tomcat:
+    threads:
+      max: 300
+      min-spare: 20
+    max-connections: 20000
+    accept-count: 200
+    connection-timeout: 5000
+    mbeanregistry:
+      enabled: true
+    accesslog:
+      enabled: false  # ECS übernimmt Logging
+
+  compression:
+    enabled: true
+    mime-types: >
+      text/html,text/xml,text/plain,text/css,
+      text/javascript,application/javascript,application/json
+    min-response-size: 1024
+
+  # --- Datasource ---
+  datasource:
+    url: jdbc:postgresql://${DB_HOST}:${DB_PORT:5432}/${DB_NAME}
+    username: ${DB_USER}
+    password: ${DB_PASSWORD}
+    hikari:
+      maximum-pool-size: 20
+      minimum-idle: 5
+      connection-timeout: 30000
+      idle-timeout: 600000
+      max-lifetime: 1800000
+
+# --- Native ECS Logging (Spring Boot 3.6) ---
+logging:
+  level:
+    root: INFO
+    org.springframework.web: INFO
+    org.apache.catalina: INFO
+
+  # Aktiviert ECS JSON Logging ohne externe Logback-Datei
+  ecs:
+    enabled: true
+    service-name: sample
+    service-environment: production
+    include-logger-name: true
+    include-thread-name: true
+    include-trace-id: true
+    include-span-id: true
+
+# --- OpenTelemetry Tracing ---
+management:
+  tracing:
+    enabled: true
+    sampling:
+      probability: 1.0
+  otlp:
+    tracing:
+      endpoint: ${OTEL_EXPORTER_OTLP_ENDPOINT:http://otel-collector:4317}
+
+  # Actuator für Kubernetes
+  server:
+    port: 9090
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus,logfile
+  endpoint:
+    health:
+      probes:
+        enabled: true
+      show-details: when_authorized
+  health:
+    livenessstate:
+      enabled: true
+    readinessstate:
+      enabled: true
+
+# --- Kubernetes Metadata (Downward API) ---
+app:
+  environment: ${ENVIRONMENT:production}
+  node-name: ${NODE_NAME:unknown}
+  pod-name: ${POD_NAME:unknown}
+  pod-namespace: ${POD_NAMESPACE:default}
+  pod-ip: ${POD_IP:0.0.0.0}
